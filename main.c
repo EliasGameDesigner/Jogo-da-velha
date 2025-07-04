@@ -3,7 +3,7 @@
 char tabuleiro[3][3];     
 char nomejogador1[2];     
 char nomejogador2[2];     
-int emPartida = 1;        // Indicador para ver se o jogo esta em andamento (1 = sim, 0 = fim)
+int emPartida = 1;       
 
 void limparTabuleiro() {
   for (int i = 0; i < 3; i++)
@@ -53,14 +53,14 @@ void verificarVencedor(char simbolo) {
 int verificarEmpate() {
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      if (tabuleiro[i][j] == ' ')   // Se ainda há espaço vazio, não é empate
+      if (tabuleiro[i][j] == ' ')   
         return 0;
-  return 1; // Se todas estão preenchidas e ninguém venceu, é empate
+  return 1; 
 }
 
 int main(void) {
   printf("Qual caractere o jogador 1 irá usar?: ");
-  scanf("%1s", nomejogador1); // %1s garante que só um caractere será lido
+  scanf("%1s", nomejogador1); 
 
   printf("Qual caractere o jogador 2 irá usar?: ");
   scanf("%1s", nomejogador2);
@@ -73,7 +73,7 @@ int main(void) {
 
     char nomejogadorAtual = nomejogador1[0];
 
-    // Loop principal da partida
+    
     while (emPartida == 1) {
       imprimirTabuleiro();
       printf("Jogador %c, escolha sua jogada.\n", nomejogadorAtual);
@@ -84,7 +84,7 @@ int main(void) {
       printf("Coluna (0 a 2): ");
       scanf("%d", &coluna);
 
-      // Validação de entrada
+      
       if (linha < 0 || linha > 2 || coluna < 0 || coluna > 2) {
         printf("Posição inválida. Tente novamente.\n");
         continue;
@@ -95,18 +95,18 @@ int main(void) {
         continue;
       }
 
-      // Executa a jogada
+      
       jogada(nomejogadorAtual, linha, coluna);
 
       verificarVencedor(nomejogadorAtual);
 
       if (emPartida && verificarEmpate()) {
-        imprimirTabuleiro();  // Mostra o tabuleiro final
+        imprimirTabuleiro();  
         printf("Deu velha!\n");
         emPartida = 0;
       }
 
-      // Alterna para o outro jogador
+      
       nomejogadorAtual = (nomejogadorAtual == nomejogador1[0]) ? nomejogador2[0] : nomejogador1[0];
     }
 
