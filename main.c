@@ -33,7 +33,7 @@ void verificarVencedor(char simbolo) {
   for (int i = 0; i < 3; i++) {
     if (tabuleiro[i][0] == simbolo && tabuleiro[i][1] == simbolo && tabuleiro[i][2] == simbolo) {
       printf("O jogador %c venceu!\n", simbolo);
-      emPartida = 0;   // Encerra a partida
+      emPartida = 0;   
       return;
     }
     if (tabuleiro[0][i] == simbolo && tabuleiro[1][i] == simbolo && tabuleiro[2][i] == simbolo) {
